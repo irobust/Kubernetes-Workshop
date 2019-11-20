@@ -3,6 +3,7 @@
 We will run one of the most common Docker helloworld applications out there- [https://hub.docker.com/r/karthequian/helloworld/]
 
 ### Running your first helloworld
+* kubectl cluster-info
 * kubectl get nodes
 * kubectl get all
 * kubectl run hw --image=karthequian/helloworld --port=80
@@ -27,7 +28,15 @@ We will run one of the most common Docker helloworld applications out there- [ht
 * kubectl scale --replicas=1 <deployment-name> `scale down`
 
 ### Web-based Kubernetes user interface
-[https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/]
+* kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+* kubectl proxy
+* [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/]
+* kubectl describe secret -n kube-system
+* Login with service account token
+
+#### Read more
+* [https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/]
+* [https://github.com/kubernetes/dashboard]
 
 ### Switch context
 * kubectl config current-context
@@ -35,3 +44,13 @@ We will run one of the most common Docker helloworld applications out there- [ht
 * kubectl config use-context <context-name>
 * kubectl config view
 * cat ~/.kube/config
+
+### Working with Namespace
+* kubectl get namespaces
+* kubectl run nginx --image=nginx --namespace=<insert-namespace-name-here>
+* kubectl get pods --namespace=kube-system
+* kubectl get pods -n kube-system
+* kubectl config view | grep namespace
+* kubectl config set-context --current --namespace=<insert-namespace-name-here>
+* kubectl create namespace <insert-namespace-name-here>
+* kubectl delete namespaces <insert-some-namespace-name> `Warning: Delete everything under namespace`
