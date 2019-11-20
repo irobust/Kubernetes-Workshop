@@ -25,3 +25,6 @@ We will run one of the most common Docker helloworld applications out there- [ht
 ### Scale your helloworld application
 * kubectl scale --replicas=3 <deployment-name> `scale up`
 * kubectl scale --replicas=1 <deployment-name> `scale down`
+
+### Web-based Kubernetes user interface
+[https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/] 
