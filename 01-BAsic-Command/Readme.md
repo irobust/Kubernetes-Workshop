@@ -27,4 +27,11 @@ We will run one of the most common Docker helloworld applications out there- [ht
 * kubectl scale --replicas=1 <deployment-name> `scale down`
 
 ### Web-based Kubernetes user interface
-[https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/] 
+[https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/]
+
+### Switch context
+* kubectl config current-context
+* kubectl config get-contexts
+* kubectl config use-context <context-name>
+* kubectl config view
+* cat ~/.kube/config
