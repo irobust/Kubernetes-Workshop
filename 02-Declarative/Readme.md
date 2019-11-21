@@ -9,8 +9,8 @@
 [https://kubernetes.io/docs/concepts/configuration/assign-pod-node/]
 
 ### Manage cluster with YAML
-* kubectl create -f hello-deployment.yml
-* kubectl apply -f hello-deployment.yml
+* kubectl create -f helloworld-deployment.yml
+* kubectl apply -f helloworld-deployment.yml
 * kubectl delete -f helloworld-service.yml 
 
 ### Rolling update and rollback application
