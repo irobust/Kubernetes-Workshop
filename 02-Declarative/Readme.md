@@ -22,3 +22,51 @@
 * kubectl rollout undo deployment/navbar-deployment --to-revision=version
 
 ### Liveness and Readyness
+
+A readiness probe is used to know when a container is ready to start accepting traffic.
+
+The yaml has the following parameters:
+```
+readinessProbe:
+  # length of time to wait for a pod to initialize
+  # after pod startup, before applying health checking
+  initialDelaySeconds: 10
+  # Amount of time to wait before timing out
+  initialDelaySeconds: 1
+  # Probe for http
+  httpGet:
+    # Path to probe
+    path: /
+    # Port to probe
+    port: 80
+```
+
+A liveness probe is used to know when a container might need to be restarted.
+
+A liveness probe yaml has the following parameters that need to be filled out:
+
+```
+livenessProbe:
+  # length of time to wait for a pod to initialize
+  # after pod startup, before applying health checking
+  initialDelaySeconds: 10
+  # Amount of time to wait before timing out
+  timeoutSeconds: 1
+  # Probe for http
+  httpGet:
+    # Path to probe
+    path: /
+    # Port to probe
+    port: 80
+```
+
+#### Step to check readyness
+* Create helloworld-with-bad-readiness-probe.yaml `change port to probe`
+* kubectl create -f helloworld-with-bad-readiness-probe.yaml
+* kubectl get deployments
+* kubectl get pods
+
+#### Step to check liveness
+* Create helloworld-with-bad-liveness-probe.yaml `change port to probe`
+* kubectl create -f helloworld-with-bad-liveness-probe.yaml
+* kubectl describe <pod-name>
