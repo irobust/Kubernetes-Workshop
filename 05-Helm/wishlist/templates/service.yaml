@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "wishlist.fullname" . }}
+  labels:
+    app: {{ template "wishlist.name" . }}
+    chart: {{ template "wishlist.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.wishlistPortValue }}
+      protocol: TCP
+      name: {{ .Values.service.wishlistPortName }}
+    - port: {{ .Values.service.catalogPortValue }}
+      protocol: TCP
+      name: {{ .Values.service.catalogPortName }}
+    - port: {{ .Values.service.authPortValue }}
+      protocol: TCP
+      name: {{ .Values.service.authPortName }}
+  selector:
+    app: {{ template "wishlist.name" . }}
+    release: {{ .Release.Name }}

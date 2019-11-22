@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "wishlist.fullname" . }}
+  labels:
+    app: {{ template "wishlist.name" . }}
+    chart: {{ template "wishlist.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "wishlist.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "wishlist.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.wishlistImage.repository }}:{{ .Values.wishlistImage.tag }}"
+          imagePullPolicy: {{ .Values.wishlistImage.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.wishlistPortValue }}
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "{{ .Values.service.wishlistPortValue }}"
+        - name: {{ .Chart.Name }}-auth
+          image: "{{ .Values.authImage.repository }}:{{ .Values.authImage.tag }}"
+          imagePullPolicy: {{ .Values.authImage.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.authPortValue }}
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "{{ .Values.service.authPortValue }}"
+        - name: {{ .Chart.Name }}-catalog
+          image: "{{ .Values.catalogImage.repository }}:{{ .Values.catalogImage.tag }}"
+          imagePullPolicy: {{ .Values.catalogImage.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.catalogPortValue }}
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "{{ .Values.service.catalogPortValue }}"

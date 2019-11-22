@@ -6,7 +6,7 @@
 * kubectl get all -o yaml
 
 ### Add Pods to Nodes
-[https://kubernetes.io/docs/concepts/configuration/assign-pod-node/]
+https://kubernetes.io/docs/concepts/configuration/assign-pod-node
 
 ### Manage cluster with YAML
 * kubectl create -f helloworld-deployment.yml
@@ -70,3 +70,6 @@ livenessProbe:
 * Create helloworld-with-bad-liveness-probe.yaml `change port to probe`
 * kubectl create -f helloworld-with-bad-liveness-probe.yaml
 * kubectl describe <pod-name>
+
+#### Pod Lifecycle
+https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle

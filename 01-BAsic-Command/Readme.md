@@ -1,6 +1,6 @@
 # Kubernetes commnad
 ## Hello World
-We will run one of the most common Docker helloworld applications out there- [https://hub.docker.com/r/karthequian/helloworld/]
+We will run one of the most common Docker helloworld applications out there- https://hub.docker.com/r/karthequian/helloworld/
 
 ### Running your first helloworld
 * kubectl cluster-info
@@ -30,13 +30,13 @@ We will run one of the most common Docker helloworld applications out there- [ht
 ### Web-based Kubernetes user interface
 * kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 * kubectl proxy
-* [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/]
+* http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 * kubectl describe secret -n kube-system
 * Login with service account token
 
 #### Read more
-* [https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/]
-* [https://github.com/kubernetes/dashboard]
+* https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard
+* https://github.com/kubernetes/dashboard
 
 ### Switch context
 * kubectl config current-context
