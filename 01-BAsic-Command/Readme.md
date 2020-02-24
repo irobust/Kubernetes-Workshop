@@ -11,6 +11,7 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl get svc `Access helloworld application from http://localhost:[random-nodeport]`
 * kubectl describe [deployment-name]
 * kubectl describe [pod-name] `po/hw-5f6c6f9545-8hwp8`
+* kubectl port-forward [pod-name] 8080:80
 
 ### Type of Service
 * NodePort `flag exposes the deployment outside of the cluster by random port from 30000-32767`
