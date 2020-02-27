@@ -12,6 +12,7 @@ spec:
       labels:
         app: helloworld
     spec:
+      restartPolicy: Always
       containers:
       - name: helloworld
         image: karthequian/helloworld:latest
@@ -35,9 +36,12 @@ spec:
           initialDelaySeconds: 10
           # Amount of time to wait before timing out
           timeoutSeconds: 1
+          periodSeconds: 20
+          failureThreshold: 3
+          successThreshold: 1
           # Probe for http
           httpGet:
             # Path to probe
             path: /
             # Port to probe
-            port: 80
+            port: 90

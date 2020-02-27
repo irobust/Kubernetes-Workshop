@@ -14,4 +14,4 @@ spec:
         image: karthequian/reader:latest
         env:
         - name: log_level
-          value: "error"
+          value: DEBUG

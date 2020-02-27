@@ -17,13 +17,15 @@
  
 ### Run คำสั่งนี้เพื่อสร้าง istio จาก template ที่ helm มีให้ (ปรับ memory เป็น 512Mi)
 ```
-    helm template install/kubernetes/helm/istio (ไฟล์อยู่ใน folder ที่ download มาจาก Istio)
-        --name istio --namespace istio-system
+    kubectl create namespace istio-system
+    (Charts อยู่ใน folder ที่ download มาจาก Istio)
+    helm template istio install/kubernetes/helm/istio
+        --namespace istio-system
         --set pilot.resources.requests.memory="512Mi" | kubectl apply -f -
     *** kubectl apply -f - เป็นการ apply โดยใช้ output จากคำสั่งก่อนหน้า ****
     
     หรือปรับ config ต่างๆตามนี้
-    helm install install/kubernetes/helm/istio --name istio
+    helm install istio install/kubernetes/helm/istio
         --namespace istio-system
         --set gateways.istio-ingressgateway.type=NodePort
         --set gateways.istio-egressgateway.type=NodePort
