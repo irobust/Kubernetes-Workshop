@@ -1,64 +1,52 @@
-# Packaging applications with Helm for Kubernetes
- 
-Please follow instruction in module : Installing Kubernetes and Helm
+# Helm3
+## Installation
+* curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+* helm version --short
+* helm env
 
-Here bellow are the commands to be launched :
+## Migrate from helm2
+* helm plugin install 2to3
+* helm plugin ls
 
-## Minikube installation
-```
-curl -o minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-chmod +x minikube
-sudo cp minikube /usr/local/bin/minikube
-minikube version
-minikube start
-```
-## Helm installation
-```
-curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz
-tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
-sudo mv linux-amd64/helm /usr/local/bin/helm
+## Find Repository
+* helm hub search redis
 
-helm version --short
-kubectl config view
-helm init
-helm repo update
-helm version --short
-kubectl get all --namespace=kube-system -l name=tiller
-helm create nginx-demo
-helm install nginx-demo
-kubectl get all | grep nginx-demo
-```
-## Helm local tiller
-```
-curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.14.3-linux-amd64.tar.gz 
-tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
-sudo mv linux-amd64/tiller /usr/local/bin/tiller
-tiller
+## Add repository
+* helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+* helm repo ls
+* helm repo delete stable
+* helm search repo redis
 
-sudo mv linux-amd64/helm /usr/local/bin/helm
-helm init --client-only
-export HELM_HOME=/home/$(whoami)/.helm
-helm version --short
-export HELM_HOST=localhost:44134
-helm version --short
+## Chose helm chart 
+* helm show chart stable/redis `(show = inspect)`
+* helm show readme stable/redis
+* helm search repo fabric8
+* helm repo add fabric8 https://fabric8.io/helm
+* helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+* helm search repo | grep -c 'incubator/'
 
-helm create nginx-localtiller-demo
-helm install nginx-localtiller-demo
-kubectl get all | grep localtiller
-kubectl get pod --namespace=kube-system -l name=tiller
-kubectl get configmaps --namespace=kube-system
-```
-## Helm delete
-```
-helm list
-helm delete calling-horse
-kubectl get configmaps --namespace=kube-system
-helm delete calling-horse --purge
-helm reset
-```
-## Other command
-```
-helm search [package]
-helm inspect [full-package-name]
-helm install --name [full-package-name]
-```
+## Deploy the chart
+* kubectl create ns redis
+* helm install my-redis stable/redis --namespace redis
+* helm ls
+* watch kubectl get deployments,pods,services -n redis
+
+## Create Persistence Volume
+* kubectl apply -f pv.yaml
+* mkdir /mnt/data1 /mnt/data2 /mnt/data3 --mode=777
+
+## Custom chart
+* helm create app-chart
+* tree app-chart
+* helm install my-app ./app-chart --dry-run --debug
+* helm install my-app ./app-chart --dry-run --debug --set image.pullPolicy=Always
+* helm install my-app ./app-chart --set image.pullPolicy=Always
+* helm upgrade my-app ./app-chart --install --reuse-values --set service.type=NodePort
+* kubectl patch service my-app-app-chart --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":31111}]'
+
+## Destroy
+* helm delete my-redis
+
+## Other
+* helm search repo | wc -l
+
