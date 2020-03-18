@@ -1,8 +1,8 @@
 # Declarative Language(YAML)
 ### Get YAML from cluster
-* kubectl get <deployment-name> -o yaml
-* kubectl get <service-name> -o yaml
-* kubectl get <service-name> -o yaml --export
+* kubectl get [deployment-name] -o yaml
+* kubectl get [service-name] -o yaml
+* kubectl get [service-name] -o yaml --export
 * kubectl get all -o yaml
 
 ### Add Pods to Nodes

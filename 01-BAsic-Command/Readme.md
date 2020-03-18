@@ -52,6 +52,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl get pods --namespace=kube-system
 * kubectl get pods -n kube-system
 * kubectl config view | grep namespace
+* kubectl config get-contexts
 * kubectl config set-context --current --namespace=[insert-namespace-name-here]
 * kubectl create namespace [insert-namespace-name-here]
 * kubectl delete namespaces [insert-some-namespace-name] `Warning: Delete everything under namespace`
+* kubectl config use-context demo
