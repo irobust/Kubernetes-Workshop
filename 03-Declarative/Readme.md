@@ -18,6 +18,8 @@ https://kubernetes.io/docs/concepts/configuration/assign-pod-node
 * kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue
 * kubectl get rs
 * kubectl rollout history deployment/navbar-deployment
+* kubectl rollout history deployment/navbar-deployment --revision=2
+* kubectl annotate deploy/navbar-deployment kubernetes.io/change-cause="change navbar color"
 * kubectl rollout undo deployment/navbar-deployment
 * kubectl rollout undo deployment/navbar-deployment --to-revision=version
 
