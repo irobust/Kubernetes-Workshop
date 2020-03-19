@@ -5,9 +5,9 @@
 
 ### Manage labels
 * kubectl get pods --show-labels
-* kubectl label <pod-name> app=helloworld `Adding label to rinning pods`
-* kubectl label <pod-name> app=helloworldapp --overwrite `Update label`
-* kubectl label <pod-name> app- `Delete label`
+* kubectl label [pod-name] app=helloworld `Adding label to rinning pods`
+* kubectl label [pod-name] app=helloworldapp --overwrite `Update label`
+* kubectl label [pod-name] app- `Delete label`
 * kubectl get pods --show-labels `Deploy sample-infrastructure-with-labels.yml first`
 
 ### Label selectors

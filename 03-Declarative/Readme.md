@@ -76,7 +76,7 @@ livenessProbe:
 #### Step to check liveness
 * Create helloworld-with-bad-liveness-probe.yaml `change port to probe`
 * kubectl create -f helloworld-with-bad-liveness-probe.yaml
-* kubectl describe <pod-name>
+* kubectl describe [pod-name]
 
 #### Pod Lifecycle
 https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle
