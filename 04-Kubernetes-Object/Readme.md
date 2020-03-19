@@ -1,7 +1,7 @@
 # Kubernetes Object
 ## Configmap and Secret
 ### Manage Configmap
-* kubectl apply configmap logger --from-literal=log_level=debug
+* kubectl create configmap logger --from-literal=log_level=debug
 * kubectl get configmaps
 * kubectl get configmap/logger -o yaml
 * kubectl edit configmap/logger
@@ -15,7 +15,7 @@
 ```
 
 ### Manage Secret
-* kubectl apply secret generic apikey --from-literal=api_key=123456789
+* kubectl create secret generic apikey --from-literal=api_key=123456789
 * kubectl get secret apikey -o yaml
 * kubectl apply -f secretreader-deployment.yaml
 
