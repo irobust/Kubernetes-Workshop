@@ -15,13 +15,18 @@ https://kubernetes.io/docs/concepts/configuration/assign-pod-node
 
 ### Rolling update and rollback application
 * kubectl create -f helloworld-black.yaml --record
-* kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue
+* kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue --record
 * kubectl get rs
 * kubectl rollout history deployment/navbar-deployment
 * kubectl rollout history deployment/navbar-deployment --revision=2
 * kubectl annotate deploy/navbar-deployment kubernetes.io/change-cause="change navbar color"
 * kubectl rollout undo deployment/navbar-deployment
 * kubectl rollout undo deployment/navbar-deployment --to-revision=version
+
+```
+  annotations:
+    kubernetes.io/change-cause: "change navbar color"
+```
 
 ### Liveness and Readyness
 
