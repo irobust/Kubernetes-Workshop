@@ -2,7 +2,7 @@ apiVersion: apps/v1beta2
 kind: DaemonSet
 metadata:
   name: example-daemonset
-  namespace: default
+  namespace: default # Create Daemonset in default namespace
   labels:
     k8s-app: example-daemonset
 spec:
