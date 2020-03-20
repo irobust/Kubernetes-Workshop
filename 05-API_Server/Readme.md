@@ -4,6 +4,7 @@
 * kubectl explain pod.spec
 * kubectl explain pod.spec.containers
 * kubectl api-resources --api-group=apps
+* kubectl api-resources --namespaced=false
 * kubectl explain deployment | head
 * kubectl explain deployment --api-version apps/v1beta2 | head
 * kubectl explain deployment --api-version apps/v1 | head
