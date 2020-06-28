@@ -2,6 +2,16 @@
 ## Hello World
 We will run one of the most common Docker helloworld applications out there- https://hub.docker.com/r/karthequian/helloworld/
 
+### Useful resources
+* https://kubernetes.io/docs/setup/
+* https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/03-compute-resources.md
+
+### Installation
+* kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr [CIDR]
+* kubeadm join [MasterIPAddress]:6443 --token [TOKEN] --discovery-token-ca-cert-hash [CERT:HASH]
+* kubeadm token create --print-join-command
+* kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+
 ### Running your first helloworld
 * kubectl cluster-info
 * kubectl get nodes

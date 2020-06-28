@@ -8,13 +8,10 @@
 * helm plugin install 2to3
 * helm plugin ls
 
-## Find Repository
-* helm hub search redis
-
 ## Add repository
 * helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 * helm repo ls
-* helm repo delete stable
+* helm repo remove stable
 * helm search repo redis
 
 ## Chose helm chart 
@@ -27,6 +24,7 @@
 
 ## Deploy the chart
 * kubectl create ns redis
+* helm repo update
 * helm install my-redis stable/redis --namespace redis
 * helm ls
 * watch kubectl get deployments,pods,services -n redis

@@ -1,7 +1,8 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: pv-volume1  labels:
+  name: pv-volume1  
+  labels:
     type: local
 spec:
   capacity:
@@ -9,7 +10,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data1"
+    path: "/Users/phanupong/Workshop/Kubernetes-Workshop/06-Helm/mnt/data1"
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -23,7 +24,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data2"
+    path: "/Users/phanupong/Workshop/Kubernetes-Workshop/06-Helm/mnt/data2"
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -37,4 +38,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data3"
+    path: "/Users/phanupong/Workshop/Kubernetes-Workshop/06-Helm/mnt/data3"
