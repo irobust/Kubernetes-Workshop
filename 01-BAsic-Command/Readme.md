@@ -10,6 +10,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr [CIDR]
 * kubeadm join [MasterIPAddress]:6443 --token [TOKEN] --discovery-token-ca-cert-hash [CERT:HASH]
 * kubeadm token create --print-join-command
+* kubeadm token list
+* openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
 * kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
 
 ### Running your first helloworld
