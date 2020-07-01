@@ -16,6 +16,12 @@ https://kubernetes.io/docs/concepts/configuration/assign-pod-node
 * kubectl apply -f helloworld-deployment.yml
 * kubectl delete -f helloworld-service.yml 
 
+### Using Kustomize
+![layout](imgs/kustomize-layout.png)
+
+* kubectl kustomize [kustomization_directory]
+* kubectl apply -k [kustomization_directory]
+
 ### Rolling update and rollback application
 * kubectl create -f helloworld-black.yaml --record
 * kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue --record
