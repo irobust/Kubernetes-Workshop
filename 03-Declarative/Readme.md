@@ -4,6 +4,9 @@
 * kubectl get [service-name] -o yaml
 * kubectl get [service-name] -o yaml --export
 * kubectl get all -o yaml
+* kubectl get po -o json
+* kubectl get po/[pod-name] -o jsonpath="{.spec.clusterIP}"
+* kubectl get po -o jsonpath="{.items[0].spec.clusterIP}"
 
 ### Add Pods to Nodes
 https://kubernetes.io/docs/concepts/configuration/assign-pod-node
