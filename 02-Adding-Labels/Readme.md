@@ -23,3 +23,6 @@
 * kubectl get all --show-labels `also work with services and deployments`
 * kubectl delete pods -l dev-lead=karthik
 
+Node Selector
+https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node
+
