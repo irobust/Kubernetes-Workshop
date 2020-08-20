@@ -44,7 +44,6 @@ metadata:
   name: wishlist-service
   labels:
     app: wishlist-service
-  namespace: default
 spec:
   type: ClusterIP
   selector:

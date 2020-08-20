@@ -81,7 +81,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: wishlist-service
-  namespace: default
 spec:
   type: NodePort
   selector:
