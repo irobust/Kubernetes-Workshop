@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# These apply to the new resources in this overlay; the base's settings don't apply here.
+# If these are different to the base, they're override it
+commonLabels:
+  app: blue-green
+
+# ditto commonLabels
+namespace: blue-green
+
+bases:
+  - ../../base
+
+resources:
+  - issuer-le-staging.yaml
+  - issuer-le-prod.yaml
+
+patchesStrategicMerge:
+  - ingress.yaml
+patchesJson6902:
+  - target:
+      group: networking.k8s.io
+      version: v1beta1
+      kind: Ingress
+      name: blue-green
+    path: ingress-patch-hostname.yaml
