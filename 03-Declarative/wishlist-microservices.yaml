@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: wishlist-app-deployment
+        service: wishlist
     spec:
       containers:
       - name: wishlist-app-deployment #1st container
@@ -40,6 +41,7 @@ spec:
     metadata:
       labels:
         app: catalog-deployment
+        service: wishlist
     spec:
       containers:
       - name: catalog #2nd container
@@ -66,6 +68,7 @@ spec:
     metadata:
       labels:
         app: wishlist-auth-deployment
+        service: wishlist
     spec:
       containers:
       - name: auth #3rd container
@@ -80,11 +83,10 @@ kind: Service
 apiVersion: v1
 metadata:
   name: wishlist-service
-  namespace: default
 spec:
   type: NodePort
   selector:
-    app: wishlist
+    service: wishlist
   ports:
   - name: wishlist-port
     protocol: TCP

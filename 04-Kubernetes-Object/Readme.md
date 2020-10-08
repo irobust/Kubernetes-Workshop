@@ -57,3 +57,10 @@ and install Contour with:
 * kubectl apply -f wishlist-contour.yaml
 * kubectl get ing
 * Consume service from http://localhost/products
+
+Nginx Controller
+* kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.2/deploy/static/provider/cloud/deploy.yaml
+
+Traefik
+* kubectl apply -f traefik-rabc.yaml
+* kubectl apply -f traefik-daemonset.yaml

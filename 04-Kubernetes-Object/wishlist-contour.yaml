@@ -65,6 +65,8 @@ metadata:
   name: wishlist-service
   labels:
     app: wishlist-service
+  annotations:
+    traefik.frontend.rule.type: PathPrefixStrip
 spec:
   rules:
   - host:

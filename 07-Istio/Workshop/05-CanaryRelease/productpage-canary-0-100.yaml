@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+    - bookinfo.local
+  gateways:
+    - bookinfo-gateway
+  http:
+  - route:
+    - destination:
+        host: productpage
+        subset: v1
+        port:
+          number: 9080
+      weight: 0
+    - destination:
+        host: productpage
+        subset: v2
+        port:
+          number: 9080
+      weight: 100
