@@ -7,6 +7,7 @@ We will run one of the most common Docker helloworld applications out there- htt
 * https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/03-compute-resources.md
 
 ### Installation
+* kubeadm config images pull
 * kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr [CIDR]
 * kubeadm join [MasterIPAddress]:6443 --token [TOKEN] --discovery-token-ca-cert-hash [CERT:HASH]
 * kubeadm token create --print-join-command
