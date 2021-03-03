@@ -5,6 +5,7 @@ kind: Kustomization
 # If these are different to the base, they're override it
 commonLabels:
   app: blue-green
+  env: prod
 
 # ditto commonLabels
 namespace: blue-green
@@ -21,7 +22,7 @@ patchesStrategicMerge:
 patchesJson6902:
   - target:
       group: networking.k8s.io
-      version: v1beta1
+      version: v1
       kind: Ingress
       name: blue-green
     path: ingress-patch-hostname.yaml
