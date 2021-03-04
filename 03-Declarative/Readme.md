@@ -87,5 +87,24 @@ livenessProbe:
 * kubectl create -f helloworld-with-bad-liveness-probe.yaml
 * kubectl describe [pod-name]
 
+### Set up probes
+```
+livenessProbe:
+    exec:
+    command:
+    - sh
+    - -c
+    - "zookeeper-ready 2181"
+
+livenessProbe
+    httpGet:
+        path: /
+        port: 80
+
+livenessProbe
+    tcpSocket:
+        port: 3306
+```
+
 #### Pod Lifecycle
 https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle
