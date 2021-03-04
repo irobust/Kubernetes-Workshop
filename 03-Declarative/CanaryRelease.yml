@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-old-version
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+      track: old
+  replicas: 4 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+        track: old
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:black
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-new-version
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+      track: new
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+        track: new
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:blue
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-all-service
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+    nodePort: 30003
+    targetPort: 80
+  selector:
+    app: helloworld
