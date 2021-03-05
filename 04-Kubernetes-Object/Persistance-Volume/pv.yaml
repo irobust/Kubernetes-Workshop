@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mongo-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  persistentVolumeReclaimPolicy: Delete
+  # nfs:
+  #   server: 172.16.94.5
+  #   path: "/export/volumes/pod"
+  hostPath:
+    path: "/Users/admin/Documents/Workshop/Mongo-data"
