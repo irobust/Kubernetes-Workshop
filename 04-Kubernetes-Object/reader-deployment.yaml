@@ -1,8 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: logreader
 spec:
+  selector:
+    matchLabels:
+      name: logreader
   replicas: 1
   template:
     metadata:
@@ -13,5 +16,5 @@ spec:
       - name: logreader
         image: karthequian/reader:latest
         env:
-        - name: log_level
+        - name: LOG_LEVEL
           value: DEBUG

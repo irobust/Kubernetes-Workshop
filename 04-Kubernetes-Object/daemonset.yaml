@@ -1,8 +1,7 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: example-daemonset
-  namespace: default # Create Daemonset in default namespace
   labels:
     k8s-app: example-daemonset
 spec:
@@ -24,7 +23,7 @@ spec:
         - date; sleep 1000
         resources:
           limits:
-            memory: 200Mi
+            memory: 400Mi
           requests:
             cpu: 100m
             memory: 200Mi

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envbin-sa
+spec:
+  serviceAccount: envbin
+  containers:
+    - name: envbin-sa
+      image: mtinside/envbin:latest

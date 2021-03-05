@@ -6,13 +6,13 @@ spec:
   selector:
     matchLabels:
       app: helloworld
-      track: old
+      track: '1.1'
   replicas: 4 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
         app: helloworld
-        track: old
+        track: '1.1'
     spec:
       containers:
       - name: helloworld
@@ -28,13 +28,13 @@ spec:
   selector:
     matchLabels:
       app: helloworld
-      track: new
+      track: '1.2'
   replicas: 1 # tells deployment to run 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
         app: helloworld
-        track: new
+        track: '1.2'
     spec:
       containers:
       - name: helloworld
@@ -53,7 +53,7 @@ spec:
   ports:
   - port: 80
     protocol: TCP
-    nodePort: 30003
+    nodePort: 30001
     targetPort: 80
   selector:
     app: helloworld
