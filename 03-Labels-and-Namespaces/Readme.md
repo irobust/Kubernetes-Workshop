@@ -1,5 +1,23 @@
-# Adding labels to the application
+# Managing Kubernetes Resources with Namespaces
+### Working with Namespace
+* kubectl get namespaces
+* kubectl run nginx --image=nginx --namespace=[insert-namespace-name-here]
+* kubectl get pods --namespace=kube-system
+* kubectl get pods -n kube-system
+* kubectl config view | grep namespace
+* kubectl config get-contexts
+* kubectl config set-context --current --namespace=[insert-namespace-name-here]
+* kubectl create namespace [insert-namespace-name-here]
+* kubectl delete namespaces [insert-some-namespace-name] `Warning: Delete everything under namespace`
 
+### Switch context
+* kubectl config current-context
+* kubectl config get-contexts
+* kubectl config use-context [context-name]
+* kubectl config view
+* cat ~/.kube/config
+
+# Managing Kubernetes Resources with Labels
 ### Adding labels during build time
 * kubectl create -f helloworld-pod-with-labels.yml
 

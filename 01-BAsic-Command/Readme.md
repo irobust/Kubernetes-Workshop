@@ -1,4 +1,11 @@
 # Kubernetes commnad
+## Moving from docker to kubernetes
+* https://kompose.io
+* kompose convert
+* kompose convert -f docker-compose.yml
+* kompose convert --out .k8s (create directory first)
+* kompose convert --replicas=3
+
 ## Hello World
 We will run one of the most common Docker helloworld applications out there- https://hub.docker.com/r/karthequian/helloworld/
 
@@ -14,6 +21,17 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubeadm token list
 * openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
 * kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+
+### Minikube Installation
+* https://minikube.sigs.k8s.io/docs/start/
+* minikube start
+* List of drivers https://minikube.sigs.k8s.io/docs/drivers/
+* kubectl run [deployment-name] --image=karthequian/helloworld --port=80
+* minikube service [deployment-name]
+* minikube dashboard
+* minikube addons list
+* minikube addons enable [plugin-name]
+* minikube addons disable [plugin-name]
 
 ### Running your first helloworld
 * kubectl cluster-info
@@ -52,21 +70,21 @@ We will run one of the most common Docker helloworld applications out there- htt
 * https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard
 * https://github.com/kubernetes/dashboard
 
-### Switch context
-* kubectl config current-context
-* kubectl config get-contexts
-* kubectl config use-context [context-name]
-* kubectl config view
-* cat ~/.kube/config
+# Kubernetes API Server
+### Get definition references
+* kubectl explain pods
+* kubectl explain pod.spec
+* kubectl explain pod.spec.containers
+* kubectl api-resources --api-group=apps
+* kubectl api-resources --namespaced=false
+* kubectl explain deployment | head
+* kubectl explain deployment --api-version apps/v1beta2 | head
+* kubectl explain deployment --api-version apps/v1 | head
+* kubectl api-versions | sort | more
 
-### Working with Namespace
-* kubectl get namespaces
-* kubectl run nginx --image=nginx --namespace=[insert-namespace-name-here]
-* kubectl get pods --namespace=kube-system
-* kubectl get pods -n kube-system
-* kubectl config view | grep namespace
-* kubectl config get-contexts
-* kubectl config set-context --current --namespace=[insert-namespace-name-here]
-* kubectl create namespace [insert-namespace-name-here]
-* kubectl delete namespaces [insert-some-namespace-name] `Warning: Delete everything under namespace`
-* kubectl config use-context demo
+### Basic concept API Object and API Server
+* kubectl proxy --port 8888
+* kubectl get po -v 9 `Track request and response`
+* kubectl auth can-i get po
+* curl http://localhost:8001/api/v1/namespaces/default/pods/hello-world
+* curl http://localhost:8001/api/v1/namespaces/default/pods/hello-world/log 
