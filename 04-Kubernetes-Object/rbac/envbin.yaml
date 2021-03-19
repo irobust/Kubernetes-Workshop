@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: envbin-sa
 spec:
-  serviceAccount: default
+  serviceAccount: envbin
   containers:
     - name: envbin-sa
       image: mtinside/envbin:latest

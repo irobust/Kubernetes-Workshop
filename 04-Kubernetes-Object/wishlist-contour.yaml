@@ -68,8 +68,13 @@ metadata:
   annotations:
     traefik.frontend.rule.type: PathPrefixStrip
 spec:
+  defaultBackend:
+    service:
+      name: wishlist-service
+      port:
+        number: 8082
   rules:
-  - host: localhost
+  - host:
     http:
       paths:
       - path: /wishlist
