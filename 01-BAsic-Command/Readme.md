@@ -40,6 +40,13 @@ We will run one of the most common Docker helloworld applications out there- htt
 * minikube addons enable [plugin-name]
 * minikube addons disable [plugin-name]
 
+### Web-based Kubernetes user interface
+* kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
+* kubectl proxy
+* http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+* kubectl describe secret -n kube-system
+* Login with service account token
+
 ### Running your first helloworld
 * kubectl cluster-info
 * kubectl get nodes
@@ -56,6 +63,10 @@ We will run one of the most common Docker helloworld applications out there- htt
 * LoadBalancer `On cloud providers that support load balancers, an external IP address would be provisioned to access the service`
 * ClusterIP `flag is only accessible by its internal IP address within the cluster`
 
+### Scale your helloworld application
+* kubectl scale --replicas=3 [deployment-name] `scale up`
+* kubectl scale --replicas=1 [deployment-name] `scale down`
+
 ###  Troubleshooting
 * kubectl logs <pod_name>
 * kubectl exec -it [pod-name] /bin/bash `If you have only one contianer`
@@ -63,17 +74,38 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl run -it net-debug --image=nixery.dev/shell/curl/wget/htop /bin/bash
 * https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
 
+#### Skaffold
+* skaffold init
+* skaffold init --compose-file docker-compose.yml
+* skaffold init --compose-file docker-compose.yml -f skaffold-test.yml
+* skaffold init -k .k8s/*.yml
 
-### Scale your helloworld application
-* kubectl scale --replicas=3 [deployment-name] `scale up`
-* kubectl scale --replicas=1 [deployment-name] `scale down`
+Define build artifacts
+```
+skaffold init --compose-file docker-compose.yml \
+        -a '{"builder": "Docker", "payload": { "path" : "Dockerfile"}, "image": "skaffold-example"}'
+```
 
-### Web-based Kubernetes user interface
-* kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
-* kubectl proxy
-* http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-* kubectl describe secret -n kube-system
-* Login with service account token
+A local build will update dist and sync it to the container
+```
+    sync:
+        manual:
+        - src: "./dist"
+          dest: "/usr/share/nginx/html"
+    docker:
+        dockerfile: "nginx.dev.dockerfile"
+```
+
+#### Build and deploy using Skaffold
+* skaffold dev
+* skaffold run
+
+Real use-case: http://github.com/DanWahlin/Angular-Jumpstart
+
+#### Other tools
+* Draft: https://draft.sh
+* Tilt: https://tilt.dev
+* Garden: https://garden.io
 
 #### Read more
 * https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard
