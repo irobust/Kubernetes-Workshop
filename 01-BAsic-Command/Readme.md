@@ -60,6 +60,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl logs <pod_name>
 * kubectl exec -it [pod-name] /bin/bash `If you have only one contianer`
 * kubectl exec -it [pod-name] -c [container-name] /bin/bash
+* kubectl run -it net-debug --image=nixery.dev/shell/curl/wget/htop /bin/bash
+* https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
 
 
 ### Scale your helloworld application
