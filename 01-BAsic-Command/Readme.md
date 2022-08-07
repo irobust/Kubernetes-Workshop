@@ -56,7 +56,6 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl get svc `Access helloworld application from http://localhost:[random-nodeport]`
 * kubectl describe [deployment-name]
 * kubectl describe [pod-name] `po/hw-5f6c6f9545-8hwp8`
-* kubectl port-forward [pod-name] 8080:80
 
 ### Type of Service
 * NodePort `flag exposes the deployment outside of the cluster by random port from 30000-32767`
@@ -68,10 +67,12 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl scale --replicas=1 [deployment-name] `scale down`
 
 ###  Troubleshooting
+* kubectl port-forward [pod-name] 8080:80
 * kubectl logs <pod_name>
 * kubectl exec -it [pod-name] /bin/bash `If you have only one contianer`
 * kubectl exec -it [pod-name] -c [container-name] /bin/bash
 * kubectl run -it net-debug --image=nixery.dev/shell/curl/wget/htop /bin/bash
+* kubectl run ephemeral-demo --image=k8s.gcr.io/pause:3.1 --restart=Never
 * https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
 
 #### Skaffold
