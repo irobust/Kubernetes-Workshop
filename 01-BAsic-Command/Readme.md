@@ -51,8 +51,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl cluster-info
 * kubectl get nodes
 * kubectl get all
-* kubectl run [deployment-name] --image=karthequian/helloworld --port=80
-* kubectl create deploy/nginx --image=karthequian/helloworld --port=80
+* kubectl run po/[pod-name] --image=karthequian/helloworld --port=80
+* kubectl create deploy/[deployment-name] --image=karthequian/helloworld --port=80
 * kubectl expose po/[pod-name] --type=NodePort
 * kubectl expose deploy/[deployment-name] --type=NodePort
 * kubectl get svc `Access helloworld application from http://localhost:[random-nodeport]`
