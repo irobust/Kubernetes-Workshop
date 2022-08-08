@@ -77,6 +77,31 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl run ephemeral-demo --image=k8s.gcr.io/pause:3.1 --restart=Never
 * https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
 
+### Using Ksniff
+#### Install Wireshark
+1. Download latest krew [here](https://github.com/kubernetes-sigs/krew/releases/tag/v0.4.3)
+1. Download Wireshark [here](https://www.wireshark.org/download.html)
+1. Add Environment Variables
+```
+C:\Program Files\Wireshark
+```
+#### Install Krew
+1. Open Powershell as admin and cd to Downloaded Folder
+1. Add Environment Variables
+```
+%USERPROFILE%\.krew\bin
+```
+1. Run 
+```
+.\Krew.exe install krew
+```
+
+#### Install and Using Ksniff
+1. kubectl krew search sniff
+1. kubectl krew install sniff
+1. kubectl sniff hello-world -n default
+1. kubectl sniff hello-world -f "port=80" -o -- | tshark -r --
+
 #### Skaffold
 * skaffold init
 * skaffold init --compose-file docker-compose.yml
