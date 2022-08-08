@@ -52,6 +52,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl get nodes
 * kubectl get all
 * kubectl run [deployment-name] --image=karthequian/helloworld --port=80
+* kubectl create deploy/nginx --image=karthequian/helloworld --port=80
+* kubectl expose po/[pod-name] --type=NodePort
 * kubectl expose deploy/[deployment-name] --type=NodePort
 * kubectl get svc `Access helloworld application from http://localhost:[random-nodeport]`
 * kubectl describe [deployment-name]
@@ -69,8 +71,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 ###  Troubleshooting
 * kubectl port-forward [pod-name] 8080:80
 * kubectl logs <pod_name>
-* kubectl exec -it [pod-name] /bin/bash `If you have only one contianer`
-* kubectl exec -it [pod-name] -c [container-name] /bin/bash
+* kubectl exec -it [pod-name] -- /bin/bash `If you have only one contianer`
+* kubectl exec -it [pod-name] -c [container-name] -- /bin/bash
 * kubectl run -it net-debug --image=nixery.dev/shell/curl/wget/htop /bin/bash
 * kubectl run ephemeral-demo --image=k8s.gcr.io/pause:3.1 --restart=Never
 * https://kubernetes.io/docs/tasks/debug-application-cluster/debug-running-pod/
