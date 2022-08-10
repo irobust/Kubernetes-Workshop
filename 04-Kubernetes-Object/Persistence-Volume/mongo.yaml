@@ -50,4 +50,4 @@ spec:
         - containerPort: 27017
         volumeMounts:
         - name: dbstorage
-          mountPath: "/data/db"
+          mountPath: "/data"

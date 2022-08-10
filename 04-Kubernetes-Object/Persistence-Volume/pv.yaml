@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: pv-mongo-data
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   capacity:
@@ -12,4 +13,6 @@ spec:
   #   server: 172.16.94.5
   #   path: "/export/volumes/pod"
   hostPath:
-    path: "/Users/admin/Documents/Workshop/Mongo-data"
+    # path: "/c/mongo-data/data"
+    path: "/c/Users/Training/Documents/mongo-data/data"
+    
