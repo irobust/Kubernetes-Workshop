@@ -14,6 +14,27 @@
             key: log_level  #Read the key called log_level
 ```
 
+```
+spec:
+      containers:
+      - name: logreader
+        image: karthequian/reader:latest
+        env:
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: logger 
+              key: log_level
+        volumeMounts:
+          - name: config-volume
+            mountPath: /app
+
+      volumes:
+      - name: config-volume
+        configMap:
+          name: logger
+```
+
 ### Manage Secret
 * kubectl create secret generic apikey --from-literal=api_key=123456789
 * kubectl get secret apikey -o yaml
