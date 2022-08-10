@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: helloworld
       track: '1.1'
-  replicas: 3 #
+  replicas: 3
   template:
     metadata:
       labels:
