@@ -1,0 +1,8 @@
+configMapGenerator:
+- name: logger
+  literals:
+    - log_level=debug
+  files:
+    - application.properties
+  options:
+    disableNameSuffixHash: true
