@@ -9,8 +9,8 @@ spec:
     matchLabels:
       app: helloworld
       track: '1.1'
-  replicas: 3 # tells deployment to run 1 pods matching the template
-  template: # create pods using pod definition in this template
+  replicas: 3 #
+  template:
     metadata:
       labels:
         app: helloworld
@@ -31,8 +31,8 @@ spec:
     matchLabels:
       app: helloworld
       track: '1.2'
-  replicas: 3 # tells deployment to run 1 pods matching the template
-  template: # create pods using pod definition in this template
+  replicas: 3
+  template:
     metadata:
       labels:
         app: helloworld
@@ -49,8 +49,6 @@ kind: Service
 metadata:
   name: public-service
 spec:
-  # if your cluster supports it, uncomment the following to automatically create
-  # an external load-balanced IP for the frontend service.
   type: NodePort
   ports:
   - port: 80
