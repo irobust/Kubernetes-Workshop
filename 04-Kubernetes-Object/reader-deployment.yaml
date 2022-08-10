@@ -17,15 +17,4 @@ spec:
         image: karthequian/reader:latest
         env:
         - name: LOG_LEVEL
-          valueFrom:
-            configMapKeyRef:
-              name: logger 
-              key: log_level
-        volumeMounts:
-          - name: config-volume
-            mountPath: /app
-
-      volumes:
-      - name: config-volume
-        configMap:
-          name: logger
+          value: debug
