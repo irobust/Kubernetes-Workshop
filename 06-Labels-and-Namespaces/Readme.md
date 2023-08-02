@@ -10,6 +10,12 @@
 * kubectl create namespace [insert-namespace-name-here]
 * kubectl delete namespaces [insert-some-namespace-name] `Warning: Delete everything under namespace`
 
+### Using Kustomize
+![layout](imgs/kustomize-layout.png)
+
+* kubectl kustomize [kustomization_directory]
+* kubectl apply -k [kustomization_directory]
+
 ### Switch context
 * kubectl config current-context
 * kubectl config get-contexts
@@ -41,6 +47,16 @@
 * kubectl get all --show-labels `also work with services and deployments`
 * kubectl delete pods -l dev-lead=karthik
 
-Node Selector
+### Node Selector
 https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node
 
+# Managing Kubernetes Resources with Annotations
+```
+  annotations:
+    kubernetes.io/change-cause: "change navbar color"
+```
+* kubectl rollout history deployment/navbar-deployment
+* kubectl rollout history deployment/navbar-deployment --revision=2
+* kubectl annotate deploy/navbar-deployment kubernetes.io/change-cause="change navbar color"
+* kubectl rollout undo deployment/navbar-deployment
+* kubectl rollout undo deployment/navbar-deployment --to-revision=version

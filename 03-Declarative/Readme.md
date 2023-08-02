@@ -8,19 +8,10 @@
 * kubectl get po/[pod-name] -o jsonpath="{.spec.clusterIP}"
 * kubectl get po -o jsonpath="{.items[0].spec.clusterIP}"
 
-### Add Pods to Nodes
-https://kubernetes.io/docs/concepts/configuration/assign-pod-node
-
 ### Manage cluster with YAML
 * kubectl create -f helloworld-deployment.yml
 * kubectl apply -f helloworld-deployment.yml
-* kubectl delete -f helloworld-service.yml 
-
-### Using Kustomize
-![layout](imgs/kustomize-layout.png)
-
-* kubectl kustomize [kustomization_directory]
-* kubectl apply -k [kustomization_directory]
+* kubectl delete -f helloworld-service.yml
 
 ### Rolling update and rollback application
 * kubectl create -f helloworld-black.yaml --record
@@ -32,47 +23,37 @@ https://kubernetes.io/docs/concepts/configuration/assign-pod-node
 * kubectl rollout undo deployment/navbar-deployment
 * kubectl rollout undo deployment/navbar-deployment --to-revision=version
 
-```
-  annotations:
-    kubernetes.io/change-cause: "change navbar color"
-```
+### Liveness, Readiness and StartupProbe
+The yaml has the following parameters:
 
-### Liveness and Readyness
+Sometimes, you have to deal with legacy applications that might require an additional startup time on their first initialization
+```
+startupProbe:
+  httpGet:
+    path: /
+    port: 80
+  failureThreshold: 3
+  periodSeconds: 10
+  initialDelaySeconds: 30
+```
 
 A readiness probe is used to know when a container is ready to start accepting traffic.
-
-The yaml has the following parameters:
 ```
 readinessProbe:
-  # length of time to wait for a pod to initialize
-  # after pod startup, before applying health checking
   initialDelaySeconds: 10
-  # Amount of time to wait before timing out
   initialDelaySeconds: 1
-  # Probe for http
   httpGet:
-    # Path to probe
     path: /
-    # Port to probe
     port: 80
 ```
 
 A liveness probe is used to know when a container might need to be restarted.
-
-A liveness probe yaml has the following parameters that need to be filled out:
-
 ```
 livenessProbe:
-  # length of time to wait for a pod to initialize
-  # after pod startup, before applying health checking
   initialDelaySeconds: 10
-  # Amount of time to wait before timing out
   timeoutSeconds: 1
-  # Probe for http
   httpGet:
-    # Path to probe
     path: /
-    # Port to probe
     port: 80
 ```
 
