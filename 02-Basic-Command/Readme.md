@@ -20,7 +20,8 @@ We will run one of the most common Docker helloworld applications out there- htt
 * kubectl cluster-info
 * kubectl get nodes
 * kubectl get all
-* kubectl run po/[pod-name] --image=karthequian/helloworld --port=80
+* kubectl run [pod-name] --image=karthequian/helloworld --port=80
+* kubectl create deploy hello --image=karthequian/helloworld --port=80
 * kubectl apply -f ../02-Declarative/helloworld-deployment.yml
 * kubectl expose po/[pod-name] --type=NodePort
 * kubectl expose deploy/[deployment-name] --type=NodePort
