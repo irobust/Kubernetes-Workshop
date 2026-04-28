@@ -13,6 +13,5 @@ spec:
   #   server: 172.16.94.5
   #   path: "/export/volumes/pod"
   hostPath:
-    # path: "/c/mongo-data/data"
-    path: "/c/Users/Training/Documents/mongo-data/data"
+    path: "/run/desktop/mnt/host/d/mongo/data"
     
