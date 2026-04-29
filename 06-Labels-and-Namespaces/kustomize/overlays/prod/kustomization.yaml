@@ -17,9 +17,9 @@ resources:
   - issuer-le-staging.yaml
   - issuer-le-prod.yaml
 
-patchesStrategicMerge:
+patches:
   - ingress.yaml
-patchesJson6902:
+patches:
   - target:
       group: networking.k8s.io
       version: v1
